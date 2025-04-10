@@ -1,7 +1,7 @@
 // Client ID from Google Cloud Console
 const CLIENT_ID = '272610170681-cjdkcjmej5312nipcu7pvop74c9se9md.apps.googleusercontent.com';
 // API Key from Google Cloud Console
-const API_KEY = 'YAIzaSyAECzToPm0ZTrZwr-e_3pO5Luat6UuodIM';
+const API_KEY = 'AIzaSyDVHcyzBUfER4fXNKIMGEC6WSfLktjDC8g';
 // ID of your Google Sheet
 const SPREADSHEET_ID = '1XJH-BORaBZFoUUwI8YM-c123YGyVt0tVy6h8yKaABy8';
 // Range of your data (including header row)
