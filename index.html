@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Sheets Web App</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://www.google.com/images/about/sheets-icon.svg">
+    <!-- Meta tags for better SEO -->
+    <meta name="description" content="A web application that integrates with Google Sheets API">
+    <meta name="keywords" content="Google Sheets, API, Web App, JavaScript">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Google Sheets Web App</h1>
+            <p class="subtitle">Easily manage your spreadsheet data</p>
+        </header>
+        
+        <div id="auth-section">
+            <button id="authorize-button" class="btn primary-btn">Sign In with Google</button>
+            <button id="signout-button" class="btn secondary-btn" style="display:none;">Sign Out</button>
+        </div>
+        
+        <div id="loading" style="display:none;" class="loading-container">
+            <div class="loading-spinner"></div>
+            <p>Loading data...</p>
+        </div>
+        
+        <div id="content" style="display:none;">
+            <div id="spreadsheet-info">
+                <h2>Your Spreadsheet Data</h2>
+                <p id="spreadsheet-name"></p>
+            </div>
+            
+            <div class="controls">
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search...">
+                    <button id="search-button" class="btn">Search</button>
+                </div>
+                <button id="refresh-button" class="btn">Refresh Data</button>
+            </div>
+            
+            <div id="spreadsheet-container">
+                <table id="data-table">
+                    <thead>
+                        <tr id="table-header"></tr>
+                    </thead>
+                    <tbody id="table-body"></tbody>
+                </table>
+                <div id="pagination" class="pagination">
+                    <!-- Pagination will be added with JavaScript -->
+                </div>
+            </div>
+            
+            <div id="form-container">
+                <h2>Add New Row</h2>
+                <form id="data-form">
+                    <!-- Form fields will be dynamically generated -->
+                </form>
+            </div>
+        </div>
+        
+        <div id="error-container" style="display:none;" class="error-container">
+            <div class="error-message">
+                <h3>Error</h3>
+                <p id="error-text"></p>
+                <button id="error-dismiss" class="btn">Dismiss</button>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; <span id="current-year"></span> Google Sheets Web App | <a href="#" id="about-link">About</a> | <a href="#" id="help-link">Help</a></p>
+        </footer>
+    </div>
+    
+    <!-- Modal for edit/delete confirmation -->
+    <div id="modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modal-title">Confirm Action</h3>
+            <p id="modal-message"></p>
+            <div class="modal-buttons">
+                <button id="modal-confirm" class="btn primary-btn">Confirm</button>
+                <button id="modal-cancel" class="btn secondary-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- About modal -->
+    <div id="about-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>About This App</h3>
+            <p>This web application allows you to view and manage data from your Google Sheets spreadsheet. You can add, edit, and delete rows, search for specific data, and more.</p>
+            <p>Built with the Google Sheets API and modern web technologies.</p>
+        </div>
+    </div>
+    
+    <!-- Help modal -->
+    <div id="help-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Help & Instructions</h3>
+            <h4>Getting Started</h4>
+            <ol>
+                <li>Sign in with your Google account by clicking the "Sign In with Google" button.</li>
+                <li>Allow the app to access your Google Sheets data when prompted.</li>
+                <li>Your spreadsheet data will be displayed in the table below.</li>
+            </ol>
+            <h4>Managing Data</h4>
+            <ul>
+                <li><strong>Add Data:</strong> Fill in the form at the bottom of the page and click "Add Row".</li>
+                <li><strong>Edit Data:</strong> Click the "Edit" button next to the row you want to modify, make your changes, and click "Update Row".</li>
+                <li><strong>Delete Data:</strong> Click the "Delete" button next to the row you want to remove.</li>
+                <li><strong>Search:</strong> Use the search box to find specific information.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Required Google API Scripts -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client"></script>
+    
+    <!-- Main Application Script -->
+    <script src="script.js"></script>
+    
+    <!-- Set current year for footer -->
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // Modal event listeners for about and help
+        document.getElementById('about-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('about-modal').style.display = 'block';
+        });
+        
+        document.getElementById('help-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('help-modal').style.display = 'block';
+        });
+        
+        // Close modals when clicking the X
+        document.querySelectorAll('.close-button').forEach(function(button) {
+            button.addEventListener('click', function() {
+                this.closest('.modal').style.display = 'none';
+            });
+        });
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            document.querySelectorAll('.modal').forEach(function(modal) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+        
+        // Dismiss error
+        document.getElementById('error-dismiss').addEventListener('click', function() {
+            document.getElementById('error-container').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

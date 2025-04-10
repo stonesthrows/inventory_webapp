@@ -1,0 +1,35 @@
+{
+    "name": "google-sheets-webapp",
+    "version": "1.0.0",
+    "description": "A web application that integrates with Google Sheets API",
+    "main": "index.html",
+    "scripts": {
+      "dev": "serve",
+      "build": "echo 'No build step needed'",
+      "start": "serve"
+    },
+    "keywords": [
+      "google",
+      "sheets",
+      "api",
+      "webapp",
+      "javascript"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+      "serve": "^14.2.1"
+    },
+    "devDependencies": {},
+    "engines": {
+      "node": ">=16.0.0"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/yourusername/google-sheets-webapp.git"
+    },
+    "bugs": {
+      "url": "https://github.com/yourusername/google-sheets-webapp/issues"
+    },
+    "homepage": "https://github.com/yourusername/google-sheets-webapp#readme"
+  }
