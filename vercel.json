@@ -1,44 +1,39 @@
 {
-    "version": 2,
-    "buildCommand": "npm run build",
-    "outputDirectory": ".",
-    "framework": null,
-    "functions": {
-      "api/*.js": {
-        "memory": 1024,
-        "maxDuration": 10
-      }
-    },
-    "routes": [
-      { "handle": "filesystem" },
-      { "src": "/api/(.*)", "dest": "/api/$1" },
-      { "src": "/(.*)", "dest": "/$1" }
-    ],
-    "env": {
-      "GOOGLE_CLIENT_ID": "@google_client_id",
-      "GOOGLE_API_KEY": "@google_api_key",
-      "SPREADSHEET_ID": "@spreadsheet_id"
-    },
-    "headers": [
-      {
-        "source": "/(.*)",
-        "headers": [
-          {
-            "key": "X-Content-Type-Options",
-            "value": "nosniff"
-          },
-          {
-            "key": "X-Frame-Options",
-            "value": "DENY"
-          },
-          {
-            "key": "X-XSS-Protection",
-            "value": "1; mode=block"
-          }
-        ]
-      }
-    ],
-    "github": {
-      "silent": true
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": ".",
+  "framework": null,
+  "functions": {
+    "api/*.js": {
+      "memory": 1024,
+      "maxDuration": 10
     }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ],
+  "env": {
+    "GOOGLE_CLIENT_ID": "@google_client_id",
+    "GOOGLE_API_KEY": "@google_api_key",
+    "SPREADSHEET_ID": "@spreadsheet_id"
+  },
+  "github": {
+    "silent": true
   }
+}
