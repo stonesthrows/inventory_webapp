@@ -1,5 +1,5 @@
 // Client ID from Google Cloud Console
-const CLIENT_ID = 'Y433704645702-b14c4o5t9q43ebdu2e335vangk4vs32f.apps.googleusercontent.com';
+const CLIENT_ID = '272610170681-cjdkcjmej5312nipcu7pvop74c9se9md.apps.googleusercontent.com';
 // API Key from Google Cloud Console
 const API_KEY = 'YAIzaSyAECzToPm0ZTrZwr-e_3pO5Luat6UuodIM';
 // ID of your Google Sheet
