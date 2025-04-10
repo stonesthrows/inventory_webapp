@@ -1,14 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
+  "buildCommand": false,
   "outputDirectory": ".",
   "framework": null,
-  "functions": {
-    "api/*.js": {
-      "memory": 1024,
-      "maxDuration": 10
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
@@ -28,11 +22,6 @@
       ]
     }
   ],
-  "env": {
-    "GOOGLE_CLIENT_ID": "@google_client_id",
-    "GOOGLE_API_KEY": "@google_api_key",
-    "SPREADSHEET_ID": "@spreadsheet_id"
-  },
   "github": {
     "silent": true
   }
